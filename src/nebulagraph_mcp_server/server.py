@@ -130,7 +130,9 @@ def get_path_resource(space: str, src: str, dst: str, depth: int, limit: int) ->
 
                 # Iterate through all paths
                 for i in range(result.row_size()):
-                    path = result.row_values(i)[0]  # The path should be in the first column
+                    path = result.row_values(i)[
+                        0
+                    ]  # The path should be in the first column
                     output += f"Path {i + 1}:\n{path}\n\n"
 
                 return output
@@ -257,7 +259,9 @@ def get_neighbors_resource(space: str, vertex: str, depth: int) -> str:
                     row = result.row_values(i)
                     neighbor_vertex = row[0]
                     edges = row[1]
-                    output += f"Neighbor Vertex:\n{neighbor_vertex}\nEdges:\n{edges}\n\n"
+                    output += (
+                        f"Neighbor Vertex:\n{neighbor_vertex}\nEdges:\n{edges}\n\n"
+                    )
                 return output
             return f"No neighbors found for vertex {vertex}"
         else:
