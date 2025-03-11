@@ -58,7 +58,9 @@ async def main():
 
     agent = await get_agent(mcp_tool)
     try:
-        await handle_user_message("Find the shortest path between 'person1' and 'person5'.", agent)
+        await handle_user_message(
+            "Find the shortest path between 'person1' and 'person5'.", agent
+        )
     except Exception as e:
         print(f"Unexpected error: {type(e)}, {e}")
 

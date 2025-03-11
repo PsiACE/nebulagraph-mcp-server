@@ -10,3 +10,5 @@ wheels/
 .venv
 .ruff_cache
 .env
+
+.DS_Store
