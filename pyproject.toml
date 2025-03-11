@@ -11,11 +11,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.12",
 ]
-dependencies = [
-    "mcp>=1.0.0",
-    "nebula3-python>=3.8.0",
-    "python-dotenv>=1.0.1",
-]
+dependencies = ["mcp>=1.0.0", "nebula3-python>=3.8.0", "python-dotenv>=1.0.1"]
 dynamic = ["version"]
 
 [build-system]
@@ -23,8 +19,10 @@ requires = ["hatchling", "hatch-vcs>=0.3.0"]
 build-backend = "hatchling.build"
 
 [dependency-groups]
-dev = ["pytest>=8.3.5", "pytest-asyncio>=0.25.3", "ruff>=0.7.3"]
-examples = [
+dev = [
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.25.3",
+    "ruff>=0.7.3",
     "llama-index>=0.12.22",
     "llama-index-llms-openai-like>=0.3.4",
     "llama-index-tools-mcp>=0.1.0",
@@ -48,13 +46,13 @@ target-version = "py312"
 
 [tool.ruff.lint]
 extend-select = [
-    "I",    # isort
-    "B",    # flake8-bugbear
-    "C4",   # flake8-comprehensions
-    "PGH",  # pygrep-hooks
-    "RUF",  # ruff
-    "W",    # pycodestyle
-    "YTT",  # flake8-2020
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "PGH", # pygrep-hooks
+    "RUF", # ruff
+    "W",   # pycodestyle
+    "YTT", # flake8-2020
 ]
 extend-ignore = ["B018", "B019", "B905"]
 

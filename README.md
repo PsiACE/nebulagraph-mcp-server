@@ -14,6 +14,8 @@ A Model Context Protocol (MCP) server implementation that provides access to [Ne
 - Follow Model Context Protocol, ready to integrate with LLM tooling systems.
 - Simple command-line interface with support for configuration via environment variables and .env files.
 
+![LlamaIndex with NebulaGraph MCP](./assets/llamaindex-with-nebulagraph-mcp.png)
+
 ## Installation
 
 ```shell

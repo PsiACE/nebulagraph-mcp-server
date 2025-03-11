@@ -866,7 +866,7 @@ wheels = [
 
 [[package]]
 name = "nebulagraph-mcp-server"
-version = "0.1.dev0+d20250310"
+version = "0.1.dev3+gc799909.d20250311"
 source = { editable = "." }
 dependencies = [
     { name = "mcp" },
@@ -876,14 +876,12 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-    { name = "ruff" },
-]
-examples = [
     { name = "llama-index" },
     { name = "llama-index-llms-openai-like" },
     { name = "llama-index-tools-mcp" },
+    { name = "pytest" },
+    { name = "pytest-asyncio" },
+    { name = "ruff" },
 ]
 
 [package.metadata]
@@ -895,14 +893,12 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "pytest", specifier = ">=8.3.5" },
-    { name = "pytest-asyncio", specifier = ">=0.25.3" },
-    { name = "ruff", specifier = ">=0.7.3" },
-]
-examples = [
     { name = "llama-index", specifier = ">=0.12.22" },
     { name = "llama-index-llms-openai-like", specifier = ">=0.3.4" },
     { name = "llama-index-tools-mcp", specifier = ">=0.1.0" },
+    { name = "pytest", specifier = ">=8.3.5" },
+    { name = "pytest-asyncio", specifier = ">=0.25.3" },
+    { name = "ruff", specifier = ">=0.7.3" },
 ]
 
 [[package]]
