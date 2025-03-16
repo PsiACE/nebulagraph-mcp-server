@@ -1,4 +1,5 @@
 import argparse
+import logging
 import os
 from contextlib import asynccontextmanager
 from dataclasses import dataclass
@@ -10,6 +11,12 @@ from nebula3.Config import Config
 from nebula3.gclient.net import ConnectionPool
 
 load_dotenv()
+
+default_log_level = os.environ.get("LOG_LEVEL", "INFO").upper()
+log_level = getattr(logging, default_log_level, logging.INFO)
+
+logging.basicConfig(level=log_level)
+logger = logging.getLogger("nebulagraph_mcp_server")
 
 
 @dataclass
@@ -36,15 +43,18 @@ async def nebula_lifespan(server: FastMCP) -> AsyncIterator[NebulaContext]:
             raise ValueError("NebulaGraph version must be v3")
 
         # Initialize the connection
-        global_pool.init(
-            [
-                (
-                    os.getenv("NEBULA_HOST", "127.0.0.1"),
-                    int(os.getenv("NEBULA_PORT", "9669")),
-                )
-            ],
-            config,
-        )
+        try:
+            global_pool.init(
+                [
+                    (
+                        os.getenv("NEBULA_HOST", "127.0.0.1"),
+                        int(os.getenv("NEBULA_PORT", "9669")),
+                    )
+                ],
+                config,
+            )
+        except Exception as e:
+            logger.error(f"Failed to initialize NebulaGraph connection: {e!s}")
 
         yield NebulaContext(pool=global_pool)
     finally:
@@ -53,7 +63,9 @@ async def nebula_lifespan(server: FastMCP) -> AsyncIterator[NebulaContext]:
 
 
 # Create MCP server
-mcp = FastMCP("NebulaGraph MCP Server", lifespan=nebula_lifespan)
+mcp = FastMCP(
+    "NebulaGraph MCP Server", lifespan=nebula_lifespan, log_level=default_log_level
+)
 
 
 @mcp.resource("schema://space/{space}")
